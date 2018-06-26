@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+  // Fallback to loading jQuery from a local path if the CDN is unavailable
+  (window.jQuery || document.write('<script src="jquery/jquery-3.1.0.js"><\/script>'));
+	</script>
+
+		<meta charset="UTF-8">
+		<title>Pixel Art Maker!</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Pacifico|Poppins|Quicksand" rel="stylesheet">
+		<!-- Fallback to locally stored Webfonts, if Google Fonts is unresponsive -->
+		<link rel="stylesheet" href="fonts/pacifico-css.css">
+    <link rel="stylesheet" href="fonts/josefin-css.css">
+    <link rel="stylesheet" href="fonts/quicksand-css.css">
+    <link rel="stylesheet" href="fonts/poppins-css.css">
+    <link rel="stylesheet" href="styles.css">
+
+		<link rel="stylesheet" href="styles.css">
+
+	</head>
+	<body>
+		<h1>Lab: Pixel Art Maker</h1>
+		<h2>Choose Grid Size</h2>
+		<form id="sizePicker">
+			Grid Height:
+
+			<input type="number" id="inputHeight" name="height" min="1" value="1">
+
+			Grid Width:
+
+			<input type="number" id="inputWeight" name="width" min="1" value="1">
+
+			<input type="submit" value="Submit">
+
+		</form>
+		<h2>Pick A Color</h2>
+		<input type="color" id="colorPicker" value="#ffb521">
+
+		<!-- Student's ID card, to be revealed when mouse hovers on the webpage for the first time -->
+		<div id="comment">
+			<span>
+				<img src="img/img.jpg" alt="Picture of student">
+			</span>
+			<ul class="me">
+				<li>
+					<strong>Student's Name: </strong>Chima Chibueze
+				</li>
+				<li>
+					<strong>Class: </strong>Front-End Web Developement Beginner
+				</li>
+				<li class="tutorz">
+					<strong>Tutors:</strong>
+					<ul class="tutor">
+						<li class="teach">Cameron,</li>
+						<li class="teach">Julia,</li>
+						<li class="teach">James,</li>
+						<li class="et">and</li>
+						<li class="teach">Richard.</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Paint notification, that updates the user's activity -->
+		<p id="notify"></p>
+
+		<h2 id="can">Design Canvas</h2>
+		<table id="pixelCanvas"></table>
+		<script src="designs.js"></script>
+	</body>
+</html>
