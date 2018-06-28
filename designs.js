@@ -8,49 +8,53 @@ var numCol, numRow, cellColr, test;
 // Listen to grid-sizes form submission event.
 $("form").submit(function() {
 
-	// Prevent the default behavior of form element.
-	event.preventDefault();
+  // Prevent the default behavior of form element.
+  event.preventDefault();
 
-	numRow = $("#inputHeight").val();
-	numCol = $("#inputWeight").val();
-	makeGrid(numRow,numCol);
-	$("#comment").remove("");
+  numRow = $("#inputHeight").val();
+  numCol = $("#inputWeight").val();
+  makeGrid(numRow, numCol);
+  $("#student-id").remove("");
 });
 
 // The "makeGrid" function
-function makeGrid(r,c) {
-	$("tr").remove();
-	for (var i = 1; i <= r; i++) {
-		$("table").append("<tr id=tab" + i + "></tr>");
-		for (var j = 1; j <= c; j++) {
-			$("#tab" + i).append("<td id=cell-" + i + "x" + j + "></td>");
-		}
-	}
+function makeGrid(r, c) {
+  $("tr").remove();
+  for (var i = 1; i <= r; i++) {
+    $("table").append("<tr id=tab" + i + "></tr>");
+    for (var j = 1; j <= c; j++) {
+      $("#tab" + i).append("<td id=cell-" + i + "x" + j + "></td>");
+    }
+  }
 
-	$("td").click(function() {
-		cellColr = $("#colorPicker").val();
+  // Dynamically paint grid cells (and announce the color used.)
+  $("td").click(function() {
+    cellColr = $("#colorPicker").val();
 
-		if ($(this).attr("style")) {
-			$(this).removeAttr("style");
+      // If the cell has previously been painted, remove that paint.
+    if ($(this).attr("style")) {
+      $(this).removeAttr("style");
 
-			// Fades in the paint notification bar within 1200 milliseconds.
-			$("#notify").fadeIn(1200);
-			$("#notify").html("<span class='blue'>Update! </span>You <span class='red'>cleared out</span> the <strong>previous color </strong>!");
-		}
-		else {
-			$(this).css("background-color", cellColr);
+      // Notifies the user when the previous background color of a cell has been removed.
+      $("#notify").html("<span class='blue'>Update! </span>You <span class='red'>cleared out</span> the <strong>previous color </strong>!");
 
-			// Fades in the paint notification bar within 1200 milliseconds.
-			$("#notify").fadeIn(1200);
-			$("#notify").html("<span class='blue'>Update! </span>You painted with the color notify code: <strong>" + cellColr + "</strong>");
-		}
+    } else {
+      // When the cell has no paint on it, apply the selected color (cellColr).
+      $(this).css("background-color", cellColr);
 
-	});
+      // Fades in the paint notification bar within 1200 milliseconds, and tells the user the color used to paint a cell.
+      $("#notify").fadeIn(1200);
+      $("#notify").html("<span class='blue'>Update! </span>You painted with the color HEX code: <strong>" + cellColr + "</strong>");
+    }
+
+  });
 
 }
 
 /*
-// Dynamically paint grid cells (and announce the color used.) -- These will produce about the same result as the one written above.
+// Dynamically paint grid cells (and announce the color used.)
+  -- These will produce about the same result as the one written inside the "makeGrid" function above.
+
 $("table").click(function() {
 	cellColr = $("#colorPicker").val();
 
@@ -58,7 +62,6 @@ $("table").click(function() {
 		$(event.target).removeAttr("style");
 
 		// Fades in the paint notification bar within 1200 milliseconds.
-		$("#notify").fadeIn(1200);
 		$("#notify").html("<span class='blue'>Update! </span>You <span class='red'>cleared out</span> the <strong>previous color </strong>!");
 	}
 	else {
@@ -66,7 +69,7 @@ $("table").click(function() {
 
 		// Fades in the paint notification bar within 1200 milliseconds.
 		$("#notify").fadeIn(1200);
-		$("#notify").html("<span class='blue'>Update! </span>You painted with the color notify code: <strong>" + cellColr + "</strong>");
+		$("#notify").html("<span class='blue'>Update! </span>You painted with the color HEX code: <strong>" + cellColr + "</strong>");
 	}
 
 });
@@ -76,11 +79,11 @@ $("table").click(function() {
 $("body").hide();
 $("body").fadeIn(2000);
 
-// Hides the student's ID card (i.e #comment) and the paint notification bar (i.e #notify).
-$("#comment").hide();
+// Hides the student's ID card (i.e #student-id) and the paint notification bar (i.e #notify).
+$("#student-id").hide();
 $("#notify").hide();
 
 // Reveals the student's ID card when the mouse hovers over the page's body.
 $("body").hover(function() {
-	$("#comment").fadeIn(2000);
+  $("#student-id").fadeIn(2000);
 });
