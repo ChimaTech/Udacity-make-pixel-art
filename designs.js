@@ -3,7 +3,7 @@
 
 // When size is submitted by the user, call makeGrid()
 
-let numCol, numRow, cellColr, test;
+let numCol, numRow, cellColr;
 
 // Listen to grid-sizes form submission event.
 $("form").submit(function() {
