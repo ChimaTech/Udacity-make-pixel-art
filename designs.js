@@ -19,7 +19,16 @@ $("form").submit(function() {
 
 // The "makeGrid" function
 function makeGrid(r, c) {
-  $("tr").remove();
+	
+	// This While Loop clears out a previously formed grid, by removing the table rows starting from the last row. 
+	const initHeight = $('tr').length;
+	let z = 1;
+	while (z <= initHeight) {
+		$('table').children(':last').remove();
+		z++;
+	}
+  
+  // This For loop creates a grid according to user's inputs: r refers to Grid Height and c refers to Grid Width.
   for (let i = 1; i <= r; i++) {
     $("table").append("<tr id=tab" + i + "></tr>");
     for (let j = 1; j <= c; j++) {
@@ -35,7 +44,7 @@ function makeGrid(r, c) {
     if ($(this).attr("style")) {
       $(this).removeAttr("style");
 
-      // Notifies the user when the previous background color of a cell has been removed.
+      // This notifies the user when the previous background color of a cell is removed.
       $("#notify").html("<span class='blue'>Update! </span>You <span class='red'>cleared out</span> the <strong>previous color </strong>!");
 
     } else {
