@@ -5,22 +5,25 @@
 
 let numCol, numRow, cellColr;
 
-// Listen to grid-sizes form submission event.
+// Listen to submit event on grid-sizes input form
 $('form').submit(function() {
-
-  // Prevent the default behavior of form element.
-  event.preventDefault();
-
+  event.preventDefault(); // Prevents the 'Form' from attempting to submit inputs to a server
   numRow = $('#inputHeight').val();
   numCol = $('#inputWeight').val();
   makeGrid(numRow, numCol);
-  $('#student-id').remove('');
+  $('#student-id').remove(''); // Removes Student ID card immediately the makeGrid function is called
 });
 
-// The 'makeGrid' function
+
+/**
+ * @description Dynamically clears out and creates grids
+ * @param {number} r
+ * @param {number} c
+ * @returns {undefined} The grid of Height r , and Width c, that is a Table of r number of rows and c number of columns.
+ */
 function makeGrid(r, c) {
 
-  // This While Loop clears out a previously formed grid, by removing the table rows starting from the last row.
+  // Clear out previous grid using While loop by removing the table rows starting from the last row.
   const initHeight = $('tr').length; // initHeight is the previous number of table rows calculated using .length method
   let z = 1;
   while (z <= initHeight) {
@@ -28,7 +31,7 @@ function makeGrid(r, c) {
     z++;
   }
 
-  // This For loop creates a grid according to user's inputs: r refers to Grid Height and c refers to Grid Width.
+  // Create grid by iteration using For/nest For loop
   for (let i = 1; i <= r; i++) {
     $('table').append('<tr id=tab' + i + '></tr>');
     for (let j = 1; j <= c; j++) {
@@ -36,24 +39,18 @@ function makeGrid(r, c) {
     }
   }
 
-  // Dynamically paint grid cells (and announce the color used.)
+  // Listen to Click events on grid cells and dynamically paint grid cells
   $('td').click(function() {
-    cellColr = $('#colorPicker').val();
+    cellColr = $('#colorPicker').val(); // Captures the selected color from color input
 
-    // If the cell has previously been painted, remove that paint.
+    // If the cell has previously been painted, remove that paint, else apply the selected paint to the cell.
     if ($(this).attr('style')) {
       $(this).removeAttr('style');
-
-      // This notifies the user when the previous background color of a cell is removed.
-      $('#notify').html('<span class="blue">Update! </span>You <span class="red">cleared out</span> the <strong>previous color </strong>!');
-
+      $('#notify').html('<span class="blue">Update! </span>You <span class="red">cleared out</span> the <strong>previous color </strong>!'); // Notifies the user that the previous color of the cell has been removed
     } else {
-      // When the cell has no paint on it, apply the selected color (cellColr).
-      $(this).css('background-color', cellColr);
-
-      // Fades in the paint notification bar within 1200 milliseconds, and tells the user the color used to paint a cell.
-      $('#notify').fadeIn(1200);
-      $('#notify').html('<span class="blue">Update! </span>You painted with the color HEX code: <strong>' + cellColr + '</strong>');
+      $(this).css('background-color', cellColr); // Applies the selected color to the cell that is clicked on.
+      $('#notify').fadeIn(1200); // Fades in the Paint Notification Bar within 1200 milliseconds
+      $('#notify').html('<span class="blue">Update! </span>You painted with the color HEX code: <strong>' + cellColr + '</strong>'); // Notifies the user the color used to paint a cell.
     }
 
   });
@@ -61,14 +58,14 @@ function makeGrid(r, c) {
 }
 
 // Make the Webpage fade in (within 2000 milliseconds)
-$('body').hide(); // hides the body of webpage
+$('body').hide(); // Hides the body of webpage
 $('body').fadeIn(2000); // Reveals the webpage
 
 // Hide the student's ID card (i.e #student-id) and the paint notification bar (i.e #notify).
-$('#student-id').hide(); // Hides the Student's ID card
-$('#notify').hide(); // Hides paint notification bar
+$('#student-id').hide();
+$('#notify').hide();
 
-// Reveals the student's ID card when the mouse hovers over the page's body.
+// Reveal the student's ID card when the mouse hovers over the page's body.
 $('body').hover(function() {
   $('#student-id').fadeIn(2000);
 });

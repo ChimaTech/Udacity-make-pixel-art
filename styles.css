@@ -1,9 +1,16 @@
+/* General Styles */
 body {
   text-align: center;
   background-color: #e8e8e8;
   -webkit-font-smoothing: antialiased;
 }
 
+strong {
+  color: #7a7a7a;
+}
+
+
+/* Headings */
 h1 {
   font-family: 'Pacifico', cursive;
   font-size: 70px;
@@ -30,7 +37,69 @@ h2:first-of-type {
   padding-top: 10px;
 }
 
-table, tr, td {
+.canvas-head {
+  text-decoration: underline;
+}
+
+
+/* Forms */
+form {
+  background-color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  padding-top: 20px;
+  width: 500px;
+  height: 40px;
+  color: #575757;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+input[type=number] {
+  width: 6em;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  color: black;
+  background-color: #d7d7d7;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding-left: 5px;
+  outline: none;
+}
+
+input[type=submit] {
+  border: 2px solid #2d5997;
+  background-color: white;
+  text-align: center;
+  border-radius: 20px;
+  padding-top: 3px;
+  width: 70px;
+  height: auto;
+  font-family: 'Poppins', sans-serif;
+  color: #424242;
+  outline: none;
+  transition: background-color 0.3s, border 0.3s, color 0.3s;      /* transition times between specified properties when mouse hovers over the button */
+}
+
+/* Change the background-color, border color and font color of the submit button when the mouse hovers over it */
+input[type=submit]:hover {
+  border: 2px solid white;
+  background-color: #6fb7ff;
+  text-align: center;
+  border-radius: 20px;
+  padding-top: 3px;
+  width: 70px;
+  height: auto;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+
+/* Table */
+table,
+tr,
+td {
   border: 1px solid black;
 }
 
@@ -49,78 +118,8 @@ td {
   width: 20px;
 }
 
-input[type=number] {
-  width: 6em;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: bold;
-  color: black;
-  background-color: #d7d7d7;
-  margin-right: 10px;
-  border-radius: 5px;
-  border: 1px solid black;
-  padding-left: 5px;
-  outline: none;
-}
 
-form {
-  background-color: white;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  padding-top: 20px;
-  width: 500px;
-  height: 40px;
-  color: #575757;
-  display: inline-block;
-  border-radius: 5px;
-}
-
-  /* Holds the notification messages of the user's painting activities */
-#notify {
-  color: black;
-  background-color: white;
-  border: 1px solid #046b04;
-  border-left: 7px solid green;
-  border-radius: 1px 3px 3px 1px;
-  padding-left: 3px;
-  padding-right: 3px;
-  margin-left: 270px;
-  height: auto;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  margin-right: 270px;
-}
-
-input[type=submit] {
-  border: 2px solid #2d5997;
-  background-color: white;
-  text-align: center;
-  border-radius: 20px;
-  padding-top: 3px;
-  width: 70px;
-  height: auto;
-  font-family: 'Poppins', sans-serif;
-  color: #424242;
-  outline: none;
-  transition: background-color 0.3s, border 0.3s, color 0.3s;
-}
-
-  /* Changes the background-color, border color and font color of the submit button when the mouse hovers over it */
-input[type=submit]:hover {
-  border: 2px solid white;
-  background-color: #6fb7ff;
-  text-align: center;
-  border-radius: 20px;
-  padding-top: 3px;
-  width: 70px;
-  height: auto;
-  font-family: 'Poppins', sans-serif;
-  color: white;
-}
-
-#can {
-  text-decoration: underline;
-}
-
+/* Student's ID Card */
 img {
   width: 100px;
   height: 100px;
@@ -128,7 +127,6 @@ img {
   border-radius: 10px;
 }
 
-/* Holds the Student ID card */
 #student-id {
   background-color: white;
   display: flex;
@@ -148,10 +146,10 @@ img {
   font-size: 12.5px;
   font-weight: 700;
   color: #383838;
-  transition: width 2s, height 2s, font-size 2s;
+  transition: width 2s, height 2s, font-size 2s;      /* transition times between specified properties when mouse hovers over the button */
 }
 
-  /* Makes the Student ID card to slightly jumb when a mouse hovers over it */
+/* Cause the Student ID card to slightly shrink when a mouse hovers over it */
 #student-id:hover {
   background-color: white;
   display: flex;
@@ -171,11 +169,9 @@ img {
   font-size: 12.5px;
   font-weight: 700;
   color: #383838;
-  transform: scale(0.99, 0.99);
+  transform: scale(0.99, 0.99);			/* Shrink Student ID card */
 }
 
-  /* The li, ul, .me,.tutor, .teach, .tutorz, .et, .blue, .red are elements and
-   class names of elements inside the student-id DOM and the notify DOM  */
 li {
   margin-right: 5px;
   margin-bottom: 7px;
@@ -211,8 +207,21 @@ ul {
   margin-top: 10px;
 }
 
-strong {
-  color: #7a7a7a;
+
+/* Notification Bar */
+#notify {
+  color: black;
+  background-color: white;
+  border: 1px solid #046b04;
+  border-left: 7px solid green;
+  border-radius: 1px 3px 3px 1px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-left: 270px;
+  height: auto;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  margin-right: 270px;
 }
 
 .blue {
